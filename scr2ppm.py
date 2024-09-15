@@ -4,7 +4,7 @@
 #   Converts .scr graphic files (standard ZX Spectrum computer screen)    #
 #   to simple .ppm format that does not provide any sort of compression.  #
 #                                                                         #
-#   Programmed by that1357 at 09-15-2024.                                 #                                                                       #
+#   Programmed by that1357 at 09-15-2024.                                 #
 ###########################################################################
 
 def to_rgb(a):
@@ -41,9 +41,14 @@ def to_rgb(a):
     else:
         return 'ERROR!'
 
-import sys
+import sys, os
 
 # Open .scr file
+if len(sys.argv) != 2:
+    n = os.path.basename(sys.argv[0])
+    print('Usage: python3 ' + n + ' filename.scr')
+    sys.exit()
+
 in_filename = sys.argv[1]
 
 try:
