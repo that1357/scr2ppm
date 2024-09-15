@@ -4,8 +4,7 @@
 #   Converts .scr graphic files (standard ZX Spectrum computer screen)    #
 #   to simple .ppm format that does not provide any sort of compression.  #
 #                                                                         #
-#   Programmed by that1357 at 09-15-2024.                                 #
-#                                                                         #
+#   Programmed by that1357 at 09-15-2024.                                 #                                                                       #
 ###########################################################################
 
 def to_rgb(a):
