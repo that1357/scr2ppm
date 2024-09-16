@@ -4,7 +4,7 @@
 #   Converts .scr graphic files (standard ZX Spectrum computer screen)    #
 #   to simple .ppm format that does not provide any sort of compression.  #
 #                                                                         #
-#   Programmed by that1357 at 09-15-2024.                                 #
+#   Programmed by that1357 on 09-15-2024.                                 #
 ###########################################################################
 
 def to_rgb(a):
@@ -58,15 +58,15 @@ except OSError:
     print('Could not open file:', in_filename)
     sys.exit()
 
-# Stores strings, which are binary representations of each byte of data
+# Хранит строки, представляющие байты (в двоичном виде) в дисплейном файле
 data = []
 base = 0
-# For each screen segment (1/3 part of screen)
+# Для каждого из трёх сегментов дисплейного файла
 for i in range(3):
     index = base
-    # Repeat 8 times
+    # 8 итераций
     for j in range(8):
-        # For each of the 8 lines in segment
+        # Для каждой из 8 линий в сегменте
         for k in range(8):
             for byte_index in range(index, index + 32):
                 hex_val = hex(content[byte_index])
@@ -76,7 +76,7 @@ for i in range(3):
         index = index - 64 * 32 + 32
     base = base + 2048
 
-# Attrs array contains two-element tuples (ink, paper) for each attr byte
+# Хранит кортежи из 2 элементов (ink, paper) для каждого байта в файле атрибутов
 attrs = []
 for i in range(6144, 6912):
     attr_val = content[i]
@@ -99,11 +99,11 @@ with open(out_filename, 'w') as out_file:
     data_index = 0
     attr_index = 0
     
-    # For each line in attrs
+    # Для каждой из 24 'строк' в массиве attrs
     for i in range(24):
-        # 8 repeats per line in attrs
+        # 8 итераций на каждую 'строку'
         for j in range(8):
-            # For each character place
+            # Для каждого из 32 'знакомест' в массиве attrs
             for k in range(32):
                 for bit in data[data_index]:
                     if bit == '0':
