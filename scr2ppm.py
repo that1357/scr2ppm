@@ -80,8 +80,9 @@ for i in range(3):
 attrs = []
 for i in range(6144, 6912):
     attr_val = content[i]
+    bright = attr_val & 0b01000000
     ink = to_rgb(attr_val & 0b01000111)
-    paper = to_rgb(((attr_val & 0b00111000) >> 3) | 0b01000000)
+    paper = to_rgb(((attr_val & 0b00111000) >> 3) | bright)
     attrs.append((ink, paper))
 
 if in_filename.endswith('.scr'):
